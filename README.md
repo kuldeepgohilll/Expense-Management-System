@@ -3,9 +3,11 @@
 A full-stack personal finance application built with C#, ASP.NET Core MVC, Entity Framework Core, SQL Server LocalDB, HTML, CSS, Bootstrap and JavaScript/Chart.js.
 
 ## Requirements
-- Visual Studio 2022 with the ASP.NET and web development workload
+
 - .NET 8 SDK
-- SQL Server LocalDB (normally installed with Visual Studio)
+- SQL Server LocalDB
+- Visual Studio Code or Visual Studio 2022
+- ASP.NET Core MVC
 
 ## Run in Visual Studio
 1. Extract the ZIP.
@@ -13,7 +15,7 @@ A full-stack personal finance application built with C#, ASP.NET Core MVC, Entit
 3. Let NuGet restore the packages.
 4. Press **Ctrl + F5**.
 5. The app creates the `ExpenseManagementDb` database automatically in LocalDB.
-6. Register a user or use the demo account if present.
+6. Register a new user and log in.
 
 ## Run from terminal
 Open a terminal in the project folder:
