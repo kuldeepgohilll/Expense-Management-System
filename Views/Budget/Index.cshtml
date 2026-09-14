@@ -1,0 +1,6 @@
+@model (string month, decimal amount, decimal spent)
+@{ViewData["Title"]="Budget"; var remaining=Model.amount-Model.spent; var pct=Model.amount>0?Math.Min(Model.spent/Model.amount*100,100):0;}
+<div class="row justify-content-center"><div class="col-lg-7"><div class="card shadow-sm p-4"><h2 class="h4 fw-bold">Monthly Budget</h2><p class="text-muted">Set a spending limit and track progress.</p>
+<form asp-action="Save" method="post"><label class="form-label">Month</label><input class="form-control mb-3" type="month" name="month" value="@Model.month" required><label class="form-label">Budget (₹)</label><input class="form-control mb-3" type="number" name="amount" value="@Model.amount" min="0" step=".01" required><button class="btn btn-primary">Save budget</button></form>
+<hr><div class="row text-center"><div class="col"><small>Budget</small><h4>₹@Model.amount.ToString("N2")</h4></div><div class="col"><small>Spent</small><h4 class="text-danger">₹@Model.spent.ToString("N2")</h4></div><div class="col"><small>Remaining</small><h4 class="@(remaining>=0?"text-success":"text-danger")">₹@remaining.ToString("N2")</h4></div></div>
+<div class="progress mt-3" style="height:14px"><div class="progress-bar" style="width:@pct%"></div></div><small>@pct.ToString("N0")% used</small></div></div></div>

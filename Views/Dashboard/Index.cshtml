@@ -1,0 +1,18 @@
+@model DashboardViewModel
+@{ViewData["Title"]="Dashboard";}
+<div class="d-flex justify-content-between align-items-center mb-4"><div><h1 class="h3 fw-bold">Financial Dashboard</h1><p class="text-muted">Overview for @Model.Month</p></div>
+<a class="btn btn-primary" asp-controller="Transactions" asp-action="Create"><i class="bi bi-plus-lg"></i> Add transaction</a></div>
+<form class="d-flex gap-2 mb-4"><input class="form-control month" type="month" name="month" value="@Model.Month"><button class="btn btn-outline-primary">View month</button></form>
+<div class="row g-3">
+<div class="col-md-3"><div class="stat"><small>Income</small><div class="value text-success">₹@Model.Income.ToString("N2")</div><i class="bi bi-arrow-down-left icon"></i></div></div>
+<div class="col-md-3"><div class="stat"><small>Expenses</small><div class="value text-danger">₹@Model.Expenses.ToString("N2")</div><i class="bi bi-arrow-up-right icon"></i></div></div>
+<div class="col-md-3"><div class="stat"><small>Balance</small><div class="value">₹@Model.Balance.ToString("N2")</div><i class="bi bi-bank icon"></i></div></div>
+<div class="col-md-3"><div class="stat"><small>Budget</small><div class="value">₹@Model.Budget.ToString("N2")</div><small>@Model.BudgetUsed.ToString("N0")% used</small></div></div></div>
+<div class="row g-4 mt-2"><div class="col-lg-7"><div class="card shadow-sm p-4"><h5 class="fw-bold">Spending by category</h5><div class="chart"><canvas id="chart"></canvas></div></div></div>
+<div class="col-lg-5"><div class="card shadow-sm p-4"><h5 class="fw-bold mb-3">Recent transactions</h5>
+@foreach(var t in Model.RecentTransactions){<div class="d-flex justify-content-between border-bottom py-2"><span><b>@t.Category</b><br><small class="text-muted">@t.TransactionDate.ToString("dd MMM yyyy")</small></span><strong class="@(t.Type=="Income"?"text-success":"text-danger")">@(t.Type=="Income"?"+":"-")₹@t.Amount.ToString("N2")</strong></div>}
+<a class="btn btn-light w-100 mt-3" asp-controller="Transactions" asp-action="Index">View all</a></div></div></div>
+@section Scripts{<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script><script>
+const labels=@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CategoryTotals.Keys)); const values=@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CategoryTotals.Values));
+new Chart(document.getElementById('chart'),{type:'doughnut',data:{labels:labels,datasets:[{data:values}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}});
+</script>}

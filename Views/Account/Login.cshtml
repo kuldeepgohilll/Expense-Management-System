@@ -1,0 +1,11 @@
+@model LoginViewModel
+@{ViewData["Title"]="Login";}
+<div class="auth"><div class="card shadow-sm auth-card"><div class="card-body p-5">
+<div class="text-center"><div class="logo"><i class="bi bi-wallet2"></i></div><h2 class="fw-bold mt-3">Expense Manager</h2><p class="text-muted">Manage income, expenses and budgets.</p></div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Login" method="post"><label asp-for="Email" class="form-label"></label><input asp-for="Email" class="form-control mb-2" value="demo@expenseapp.com"><span asp-validation-for="Email" class="text-danger"></span>
+<label asp-for="Password" class="form-label mt-2"></label><input asp-for="Password" class="form-control mb-3" value="password"><span asp-validation-for="Password" class="text-danger"></span>
+<button class="btn btn-primary w-100">Sign in</button></form>
+<p class="text-center mt-4">New user? <a asp-action="Register">Create account</a></p>
+</div></div></div>
+@section Scripts{<partial name="_ValidationScriptsPartial" />}
