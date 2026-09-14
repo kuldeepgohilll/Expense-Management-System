@@ -20,16 +20,16 @@ A full-stack web application for managing personal income, expenses, and monthly
 ## Screenshots
 
 ### Login
-![LOGIN](screenshots/LOGIN.png)
+![LOGIN](Screenshot/LOGIN.png)
 
 ### Dashboard
-![DASHBOARD](screenshots/DASHBOARD.png)
+![DASHBOARD](Screenshot/DASHBOARD.png)
 
 ### Transactions
-![TRANSACTION](screenshots/TRANSACTION.png)
+![TRANSACTION](Screenshot/TRANSACTION.png)
 
 ### Budget
-![BUDGET](screenshots/BUDGET.png)
+![BUDGET](Screenshot/BUDGET.png)
 
 ## Technologies Used
 
